@@ -33,7 +33,9 @@
     <access origin="*"/>
 
     <!-- <content src="http://mysite.com/myapp.html" /> for external pages -->
-    <content src="index.html" />
+    <content src="index.html" /> 
+    <!-- <content src="http://smcgrades.websitebuilderteam.com/www/index.html" /> -->
+    
 
     <preference name="loglevel" value="DEBUG" />
     <!--
