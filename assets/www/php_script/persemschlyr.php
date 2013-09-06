@@ -42,18 +42,19 @@ else
     <body>   
     		
     	
-<!-- Profile Page -->
+<!-- Search Grades per Semester and School Year Page -->
     	<div data-role="page" data-theme="e" id="profile">
     		<div data-role="header" data-position="fixed" data-theme="e">
     			<h1>Grades Inquiry</h1>   	
 	    			<nav data-role="navbar">
 	    			<ul>
-	    				<li><a href="#" data-icon="home" id="profile" class="ui-btn-active ui-state-persist" data-transition="none">Profile</a></li>
+	    				<li><a href="profile.php" data-icon="home" id="profile" data-transition="none">Profile</a></li>
 	    				<li><a href="javascript:logout()" data-icon="delete" id="logout" onclick='logout();' data-transition="none">Logout</a></li>
 	    			</ul>
 	    			</nav>	
     		</div>
-    		<div data-role="content" data-theme="e"> 
+    		<div data-role="content" data-theme="e">
+    		<h2 align="center">Search Grades per Semester and School Year</h2> 
 				<fieldset class="ui-grid-a">
 					<div class="ui-block-a">
 						<p>ID Number: </p>	 
@@ -63,21 +64,72 @@ else
 						<p>Course: </p>	 
 						<p>Year Level: </p>
 					</div>
-				</fieldset>	
+				</fieldset> 
 				
-				<div><p></p></div>
+				<form method="post" action="">
+				<table><tr><td>
+					<fieldset data-role="fieldcontain">
+					<label for="semester">Select Semester: </label></td>
+					<td><select name="" id="" data-native-menu="false">
+						<option>Choose one:</option>
+						<option value="first">First Semester</option>
+						<option value="second">Second Semester</option>
+						<option value="summer">Summer</option>
+					</select>	
+					</fieldset></td></tr>
+					<tr><td>
+					<fieldset data-role="fieldcontain">
+					<label for="semester">Select School Year: </label></td>
+					<td><select name="" id="" data-native-menu="false">
+						<option>Choose one:</option>
+						<option value="2011-2012">2011-2012</option>
+						<option value="2012-2013">2012-2013</option>
+						<option value="2013-2014">2013-2014</option>
+					</select>	
+					</fieldset></td></tr>
+					</table>		
+				</form> 
 				
-				<div data-role="controlgroup" align="center" data-type="vertical">
-            				<input type="submit" name="sgss" id="sg_sm_sy" value="Search Grades per Semester and School Year" data-role="button" data-icon="check" onclick="location.href='persemschlyr.php'" />
-            				<input type="submit" name="sgss" id="sg_sy" value="Search Grades per School Year" data-role="button" data-icon="check" />
-            				<input type="submit" name="sgss" id="sg_sb" value="Search Grades per Subject" data-role="button" data-icon="check" />
-				</div>   
+				<p>Results:</p>
+					<table>
+						<tr>
+						<th>Firstname</th>
+						<th>Lastname</th>
+						<th>Savings</th>
+						</tr>
+						<tr>
+						<td>Peter</td>
+						<td>Griffin</td>
+						<td>$100</td>
+						</tr>
+						<tr>
+						<td>Lois</td>
+						<td>Griffin</td>
+						<td>$150</td>
+						</tr>
+						<tr>
+						<td>Joe</td>
+						<td>Swanson</td>
+						<td>$300</td>
+						</tr>
+						<tr>
+						<td>Cleveland</td>
+						<td>Brown</td>
+						<td>$250</td>
+						</tr>
+					</table>
+				
     		</div>
-    		<div data-role="footer" class="ui-bar" data-theme="e" data-position="fixed">
-				<p class="copyright">&copy; SMC Grades Inquiry System 2013. All Rights Reserved.</p>	
-    		</div>
+    		<div data-role="footer" data-theme="e" data-type="horizontal" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#" data-role="button" data-icon="check" data-transition="none">Search Grades per School Year</a></li>
+					<li><a href="#" data-role="button"  data-icon="check" data-transition="none">Search Grades per Subject</a></li>
+				</ul>	
+			</div>	
+		</div>
     	</div>
-<!-- End of Profile Page -->
+<!-- End of Search Grades per Semester and School Year Page -->
     	
  
     </body>
