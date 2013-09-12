@@ -5,10 +5,13 @@
 	    			<nav data-role="navbar">
 	    			<ul>
 	    				<li><a href="#" data-icon="home" class="ui-btn-active ui-state-persist" id="home" 
-                        	data-transition="none">Home</a></li>
-	    				<li><a href="<?php echo base_url();?>index.php/home/about" data-icon="info" id="about" data-transition="none">About Us</a></li>
-	    				<li><a href="<?php echo base_url();?>index.php/home/contact" data-icon="info" id="contact" data-transition="none">Contact Us</a></li>
-	    				<li><a href="php_script/login.php" data-icon="arrow-r" id="login" data-transition="none">Login</a></li>
+                        	data-transition="slide">Home</a></li>
+	    				<li><a href="<?php echo base_url();?>index.php/home/about" data-icon="info" id="about" 
+                        	data-transition="slide">About Us</a></li>
+	    				<li><a href="<?php echo base_url();?>index.php/home/contact" data-icon="info" id="contact" 
+                        	data-transition="slide">Contact Us</a></li>
+	    				<li><a href="<?php echo base_url();?>index.php/home/login" data-icon="arrow-r" id="login" 
+                        	data-transition="slide">Login</a></li>
 	    			</ul>
 	    			</nav>	   
     		</div>
