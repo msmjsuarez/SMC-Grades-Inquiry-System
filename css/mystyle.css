@@ -1,0 +1,33 @@
+.ui-header .ui-title img {
+	width:100%; /* you can use % */
+    height: auto;
+}
+.copyright {
+	font-size: 10px;
+	text-align: center;
+}
+
+.ui-grid-a .ui-block-a {
+float:left;
+}
+
+.ui-grid-a .ui-block-b {
+float:right;
+}
+
+.ui-content {
+border-width: 0;
+overflow: visible;
+overflow-x: hidden;
+padding: 15px;
+margin:0 auto;
+}
+
+.ui-content p {
+	text-align:justify;
+}
+
+#map_canvas {
+        width: 500px;
+        height: 400px;
+}
