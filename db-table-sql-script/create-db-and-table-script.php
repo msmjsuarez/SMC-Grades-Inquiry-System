@@ -16,10 +16,17 @@ include 'header.php';
 		$result=@mysql_query($sql);
 		if (!$result)
 		{
-		mysql_query("CREATE TABLE student(student_id varchar(8) NOT NULL PRIMARY KEY, first_name char(30),last_name char(30), age int(2), email varchar(30), year_of_enrollment varchar(9), department_id int(2))") or die(mysql_error());  
+		mysql_query("CREATE TABLE student(studid int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, student_id varchar(8), first_name char(30),last_name char(30), age int(2), email varchar(30), year_of_enrollment varchar(9), department_id int(2))") or die(mysql_error());  
 		echo "<p>Table student created successfully.</p>";
 		}
-
+		
+		$sql="SELECT * FROM enrolled_year";
+		$result=@mysql_query($sql);
+		if (!$result)
+		{
+		mysql_query("CREATE TABLE enrolled_year(enrolled_year_id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, school_year_id int(11), fschool_year varchar(9), student_id varchar(8))") or die(mysql_error());  
+		echo "<p>Table enrolled_year created successfully.</p>";
+		}
 
 
 		$sql="SELECT * FROM department";
@@ -36,7 +43,7 @@ include 'header.php';
 		$result=@mysql_query($sql);
 		if (!$result)
 		{
-		mysql_query("CREATE TABLE semester(semester_id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, semester_name char(5))") or die(mysql_error());  
+		mysql_query("CREATE TABLE semester(semester_id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, semester_name char(10))") or die(mysql_error());  
 		echo "<p>Table semester created successfully.</p>";
 		}
 			

@@ -17,9 +17,9 @@
    		  <div data-role="content" data-theme="e">  
 			<div data-role="controlgroup">
                 <?php
-					$_SESSION['student_id'] = $this->input->post('student_id');
-					
-					//$_SESSION['email'] = $this->input->post('email');
+					echo ("<script language='javascript'>
+        					window.alert('Invalid ID Number and/or Password')
+       					 </script>");
 					
                     echo validation_errors('<p class="error">');
                     echo form_open('home/validate_credentials');	
@@ -27,18 +27,10 @@
                     echo form_label('ID Number: ', 'student_id');			   
                            echo '<p>'.form_input(array(
                             'name' => 'student_id',
-                            'value' => $_SESSION['student_id'],
+                            'value' => '',
                             'placeholder' => 'ID Number',
                             'id' => 'student_id'
                            )).'</p>';
-						   
-						  /* form_label('Email: ', 'email');			   
-                           echo '<p>'.form_input(array(
-                            'name' => 'email',
-                            'value' => $_SESSION['email'],
-                            'placeholder' => 'Email',
-                            'id' => 'email'
-                           )).'</p>';*/
                            
                     echo form_label('Password <span class="error">(format: IDNumber-FirstLetterOfFirstName-FirstLetterOfLastName)</error>: ', 'password') ;			   
                            echo '<p>'.form_password(array(

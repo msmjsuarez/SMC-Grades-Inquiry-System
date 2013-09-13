@@ -4,8 +4,8 @@
     			<h1><img src="<?php echo base_url();?>images/header.png" /></h1>   	
 	    			<nav data-role="navbar">
 	    			<ul>
-	    				<li><a href="<?php echo base_url();?>" data-icon="home" id="home" data-transition="slide">Home</a></li>
-	    				<li><a href="#" data-icon="info" id="about" class="ui-btn-active ui-state-persist" 
+	    				<li><a href="<?php echo base_url();?>" data-icon="home" data-transition="slide">Home</a></li>
+	    				<li><a href="#" data-icon="star" id="about" class="ui-btn-active ui-state-persist" 
                         	data-transition="slide">About Us</a></li>
 	    				<li><a href="<?php echo base_url();?>index.php/home/contact" data-icon="info" id="contact" 
                         	data-transition="slide">Contact Us</a></li>
@@ -15,5 +15,5 @@
 	    			</nav>	   
     		</div>
    		  <div data-role="content" data-theme="e">  
-			<h2 class="center"><strong>For Educational Purposes Only!</strong></h2>					
+			<h3 class="center"><strong>For Educational Purposes Only!</strong></h3>					
             </div>

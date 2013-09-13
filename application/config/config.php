@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';
+$config['base_url']	= 'http://localhost/smc-grades-inquiry-system/ci';
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'dfgdt3444fdf';
+$config['encryption_key'] = '4354354656546435435435435';
 
 /*
 |--------------------------------------------------------------------------

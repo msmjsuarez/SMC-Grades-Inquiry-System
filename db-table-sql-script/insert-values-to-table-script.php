@@ -49,6 +49,20 @@ mysql_query("INSERT INTO student (student_id, first_name, last_name, age, email,
 
 
 
+
+
+mysql_query("INSERT INTO enrolled_year (school_year_id, fschool_year, student_id) VALUES('1', '2011-2012', 'C11-0395')") or die(mysql_error());
+mysql_query("INSERT INTO enrolled_year (school_year_id, fschool_year, student_id) VALUES('2', '2012-2013', 'C11-0395')") or die(mysql_error());
+mysql_query("INSERT INTO enrolled_year (school_year_id, fschool_year, student_id) VALUES('3', '2013-2014', 'C11-0395')") or die(mysql_error());
+mysql_query("INSERT INTO enrolled_year (school_year_id, fschool_year, student_id) VALUES('2', '2011-2012', 'C12-0355')") or die(mysql_error());
+mysql_query("INSERT INTO enrolled_year (school_year_id, fschool_year, student_id) VALUES('3', '2013-2014', 'C12-0355')") or die(mysql_error());
+mysql_query("INSERT INTO enrolled_year (school_year_id, fschool_year, student_id) VALUES('3', '2013-2014', 'C13-0573')") or die(mysql_error());
+
+
+
+
+
+
 mysql_query("INSERT INTO subject (subject_code, subject_name, credit) VALUES('ITE-101', 'IT Fundamentals', '3.0')") or die(mysql_error()); 
 
 mysql_query("INSERT INTO subject (subject_code, subject_name, credit) VALUES('Math-111', 'College Algebra', '3.0')") or die(mysql_error());
