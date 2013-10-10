@@ -10,8 +10,6 @@ class Gradesinquiry extends CI_Controller {
 	public function is_logged_in()
 	{
 		$is_logged_in = $this->session->userdata('is_logged_in');
-		//$email = $this->session->userdata('email');
-		//$_SESSION['email'] = $email;
 		
 		$student_id = $this->session->userdata('student_id');
 		$_SESSION['student_id'] = $student_id;
@@ -38,6 +36,24 @@ class Gradesinquiry extends CI_Controller {
 		$data['query'] = $this->gradesinquiry_model->student_details();
 		
 		$data['content'] = 'search_grade_sm_sy';
+		$this->load->view('includes/template_member_search', $data);
+	}
+	
+	public function search_grade_sy() 
+	{
+		$this->load->model('gradesinquiry_model');
+		$data['query'] = $this->gradesinquiry_model->student_details();
+		
+		$data['content'] = 'search_grade_sy';
+		$this->load->view('includes/template_member_search', $data);
+	}
+	
+	public function search_grade_subj() 
+	{
+		$this->load->model('gradesinquiry_model');
+		$data['query'] = $this->gradesinquiry_model->student_details();
+		
+		$data['content'] = 'search_grade_subj';
 		$this->load->view('includes/template_member_search', $data);
 	}
 	

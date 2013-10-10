@@ -1,5 +1,5 @@
-<!-- Search Grades per Semester and School Year Page -->
-    	<div data-role="page" data-theme="e" id="search_grade_sm_sy">
+<!-- Search Grades per Subject Page -->
+    	<div data-role="page" data-theme="e" id="search_grade_subj">
     		<div data-role="header" data-position="fixed" data-theme="e">
     			<h1><img src="<?php echo base_url();?>images/header.png" /></h1>  	
 	    			<nav data-role="navbar">
@@ -38,34 +38,22 @@
                 
                 <?php
 					echo validation_errors('<p class="error">');
-					echo form_open('gradesinquiry/search_grade_sm_sy');
+					echo form_open('gradesinquiry/search_grade_subj');
 				?>
-                <div data-role="fieldcontain">
-                    <label for="select-choice-1" class="select">Y.Semester: </label>
-                    <select name="semester_id" style="width:200px;" data-native-menu="false">
-                        <option value="">Please select semester</option>
-                            <?php
-                                $query = $this->db->query('SELECT * FROM semester ORDER by semester_id ASC');
-                                    if ($query->num_rows() > 0) {			
-                                        foreach ($query->result_array() as $row) {
-                                            echo "<option value=$row[semester_id]>". $row['semester_name']."</option>";
-                                        }
-                                    }
-                            ?>
-                    </select>
-                </div>
                 <div data-role="fieldcontain" style="padding: 10px;">
-                    <label for="select-choice-2" class="select">School Year: </label>
-                    <select name="school_year_id" style="width:200px;" data-native-menu="false">
-                        <option value="">Please select school year</option>
+                    <label for="select-choice-1" class="select">Subject Code: </label>
+                    <select name="subject_code" style="width:200px;" data-native-menu="false">
+                        <option value="">Please select subject</option>
                             <?php
-                                $query = $this->db->query('SELECT * FROM enrolled_year 
-                                         where student_id = "'.$_SESSION['student_id'].'" ORDER by fschool_year ASC');
-                                    if ($query->num_rows() > 0) {			
-                                        foreach ($query->result_array() as $row) {
-                                            echo "<option value=$row[school_year_id]>". $row['fschool_year']."</option>";
-                                        }
-                                    }
+							$query = $this->db->query('SELECT subject_code, student_id, COUNT(*) FROM grading_sheets 
+								where student_id = "'.$_SESSION['student_id'].'"  GROUP BY subject_code 
+								HAVING COUNT(*) > 1 ORDER BY subject_code');
+									if ($query->num_rows() > 0) {
+										foreach ($query->result_array() as $row) { 
+												$subject_code = $row['subject_code'];
+												echo "<option value=$row[subject_code]>". $row['subject_code']."</option>";
+										}
+									}
                             ?>
                     </select>
                 </div>
@@ -79,39 +67,55 @@
                <?php
 			   	echo '<div style="width:100%; max-width: 550px; margin: 0 auto;">';
 			   		if(isset($_POST['submit'])) {
-						$semester_id = $this->input->post('semester_id');
-						$school_year_id = $this->input->post('school_year_id');
+						$subject_code = $this->input->post('subject_code');
 						
-						$query = $this->db->query('SELECT * FROM school_year 
-									WHERE school_year_id="'.$school_year_id.'" ');
+						$query = $this->db->query('SELECT * FROM subject 
+									WHERE subject_code="'.$subject_code.'" ');
 										if ($query->num_rows() > 0) {
 											foreach ($query->result_array() as $row) {
-												$school_year_id = $row['school_year_id'];
-												$fschool_year = $row['fschool_year'];
+												$subject_code = $row['subject_code'];
+												$subject_name = $row['subject_name'];
 											}
-											
-											if ($semester_id == 1) {
-												echo '<p>You search for: First Semester</p>';
-												echo '<p>School Year: '.$fschool_year.'</p>';
-											}
-											else if ($semester_id == 2) {
-												echo '<p>You search for: Second Semester</p>';
-												echo '<p>School Year: '.$fschool_year.'</p>';
-											}
-											else if ($semester_id == 3) {
-												echo '<p>You search for: Summer</p>';
-												echo '<p>School Year: '.$fschool_year.'</p>';
-											}
-						
+										echo '<p>You search for Subject: '.$subject_code.' - '.$subject_name.'</p>';
 										}
 						
 						
 						
+						
 						$query = $this->db->query('SELECT * FROM grading_sheets 
-									WHERE semester_id="'.$semester_id.'" 
-									and school_year_id="'.$school_year_id.'" 
+									WHERE subject_code="'.$subject_code.'" 
+									and term_id = 2
 									and student_id = "'.$_SESSION['student_id'].'" ');
 										if ($query->num_rows() > 0) {
+											foreach ($query->result_array() as $row) {
+												$semester_id = $row['semester_id'];
+												$school_year_id = $row['school_year_id'];
+											
+											
+												$query1 = $this->db->query('SELECT * FROM school_year 
+													WHERE school_year_id="'.$school_year_id.'" ');
+													if ($query1->num_rows() > 0) {	
+														foreach ($query1->result_array() as $row) {
+															echo '<h4>School Year: '.$row['fschool_year'].'</h4>';
+														}
+													}
+													
+												$query = $this->db->query('SELECT * FROM semester 
+													WHERE semester_id="'.$semester_id.'" ');
+													if ($query->num_rows() > 0) {
+														if ($semester_id == 1) {
+															echo '<h4>First Semester</h4>';
+														}
+														else if ($semester_id == 2) {
+															echo '<h4>Second Semester</h4>';
+														}
+														else if ($semester_id == 3) {
+															echo '<h4>Summer</h4>';
+														}
+													}
+												
+												
+											}
 										}
 										else {
 											echo '<script>alert("Invalid input, please try again!")</script>';
@@ -119,8 +123,7 @@
 						
 						
 			   			$query2 = $this->db->query('SELECT * FROM grading_sheets WHERE
-									 semester_id="'.$semester_id.'" 
-									 and school_year_id="'.$school_year_id.'"
+									 subject_code = "'.$subject_code.'"
 									 and term_id = 2 
 									 and student_id = "'.$_SESSION['student_id'].'" 
 									 order by subject_code ASC');
@@ -141,21 +144,16 @@
 												echo '<p style="border-top: 1px #f4c63f dotted; 
 												border-bottom: 1px #f4c63f dotted;">'.$subject_code. '</p>';
 											}
-											echo '<strong>GPA</strong>';
 											echo '</div>';
 										}
 						
 						
 			   			$query2 = $this->db->query('SELECT * FROM grading_sheets WHERE
-									 semester_id="'.$semester_id.'" 
-									 and school_year_id="'.$school_year_id.'"
+									 subject_code="'.$subject_code.'"
 									 and term_id = 1 
 									 and student_id = "'.$_SESSION['student_id'].'" 
 									 order by subject_code ASC');
 									 
-									 	$average = 0;
-										$totalaverage = 0;
-										$counter = 0;
 										if ($query2->num_rows() > 0) {
 											echo '<div style="width:100%; max-width: 85px; float:left; 
 												border: 1px #f4c63f dotted; text-align: center;">';
@@ -171,31 +169,21 @@
 												
 												echo '<p style="border-top: 1px #f4c63f dotted; 
 												border-bottom: 1px #f4c63f dotted;">'.$fgrades. '</p>';
-												
-												$counter++;
-												$average += $fgrades;
 											}
-											$totalaverage = $average / $counter;
-											echo '<strong>'.sprintf("%0.2f", $totalaverage).'</strong>';
 											echo '</div>';
 										}
 						
-								
-						$query3 = $this->db->query('SELECT * FROM grading_sheets WHERE
-									 semester_id="'.$semester_id.'" 
-									 and school_year_id="'.$school_year_id.'"
+						$query2 = $this->db->query('SELECT * FROM grading_sheets WHERE
+									 subject_code="'.$subject_code.'"
 									 and term_id = 2 
 									 and student_id = "'.$_SESSION['student_id'].'" 
 									 order by subject_code ASC');
 									 
-									 	$average = 0;
-										$totalaverage = 0;
-										$counter = 0;
-										if ($query3->num_rows() > 0) {
+										if ($query2->num_rows() > 0) {
 											echo '<div style="width:100%; max-width: 85px; float:left; 
 												border: 1px #f4c63f dotted; text-align: center;">';
 											echo '<h4>Midterm</h4>';
-											foreach ($query3->result_array() as $row) {
+											foreach ($query2->result_array() as $row) {
 												$grading_sheets_id = $row['grading_sheets_id'];
 												$subject_code = $row['subject_code'];
 												$fgrades = $row['fgrades'];
@@ -206,31 +194,21 @@
 												
 												echo '<p style="border-top: 1px #f4c63f dotted; 
 												border-bottom: 1px #f4c63f dotted;">'.$fgrades. '</p>';
-											
-												$counter++;
-												$average += $fgrades;
 											}
-											$totalaverage = $average / $counter;
-											echo '<strong>'.sprintf("%0.2f", $totalaverage).'</strong>';
 											echo '</div>';
 										}
 										
-								
-						$query3 = $this->db->query('SELECT * FROM grading_sheets WHERE
-									 semester_id="'.$semester_id.'" 
-									 and school_year_id="'.$school_year_id.'"
-									 and term_id = 3
+						$query2 = $this->db->query('SELECT * FROM grading_sheets WHERE
+									 subject_code="'.$subject_code.'"
+									 and term_id = 3 
 									 and student_id = "'.$_SESSION['student_id'].'" 
 									 order by subject_code ASC');
 									 
-									 	$average = 0;
-										$totalaverage = 0;
-										$counter = 0;
-										if ($query3->num_rows() > 0) {
+										if ($query2->num_rows() > 0) {
 											echo '<div style="width:100%; max-width: 85px; float:left; 
 												border: 1px #f4c63f dotted; text-align: center;">';
-											echo '<h4>SemiFinal</h4>';	
-											foreach ($query3->result_array() as $row) {
+											echo '<h4>SemiFinal</h4>';
+											foreach ($query2->result_array() as $row) {
 												$grading_sheets_id = $row['grading_sheets_id'];
 												$subject_code = $row['subject_code'];
 												$fgrades = $row['fgrades'];
@@ -241,62 +219,45 @@
 												
 												echo '<p style="border-top: 1px #f4c63f dotted; 
 												border-bottom: 1px #f4c63f dotted;">'.$fgrades. '</p>';
-											
-												$counter++;
-												$average += $fgrades;
 											}
-											$totalaverage = $average / $counter;
-											echo '<strong>'.sprintf("%0.2f", $totalaverage).'</strong>';
 											echo '</div>';
 										}
 										
+						$query2 = $this->db->query('SELECT * FROM grading_sheets WHERE
+									 subject_code="'.$subject_code.'"
+									 and term_id = 4 
+									 and student_id = "'.$_SESSION['student_id'].'" 
+									 order by subject_code ASC');
+									 
+										if ($query2->num_rows() > 0) {
+											echo '<div style="width:100%; max-width: 85px; float:left; 
+												border: 1px #f4c63f dotted; text-align: center;">';
+											echo '<h4>Final</h4>';
+											foreach ($query2->result_array() as $row) {
+												$grading_sheets_id = $row['grading_sheets_id'];
+												$subject_code = $row['subject_code'];
+												$fgrades = $row['fgrades'];
+												$term_id = $row['term_id'];
+												$semester_id = $row['semester_id'];
+												$school_year_id = $row['school_year_id'];
+												$student_id = $row['student_id'];
+												
+												echo '<p style="border-top: 1px #f4c63f dotted; 
+												border-bottom: 1px #f4c63f dotted;">'.$fgrades. '</p>';
+											}
+											echo '</div>';
+										}
+										
+						
+						
 							
-						$query3 = $this->db->query('SELECT * FROM grading_sheets WHERE
-									 semester_id="'.$semester_id.'" 
-									 and school_year_id="'.$school_year_id.'"
-									 and term_id = 4
-									 and student_id = "'.$_SESSION['student_id'].'" 
-									 order by subject_code ASC');
-									 
-									 	$average = 0;
-										$totalaverage = 0;
-										$counter = 0;
-										if ($query3->num_rows() > 0) {
-											echo '<div style="width:100%; max-width: 85px; float:left; 
-												border: 1px #f4c63f dotted; text-align: center;">';
-											echo '<h4>Final</h4>';	
-											foreach ($query3->result_array() as $row) {
-												$grading_sheets_id = $row['grading_sheets_id'];
-												$subject_code = $row['subject_code'];
-												$fgrades = $row['fgrades'];
-												$term_id = $row['term_id'];
-												$semester_id = $row['semester_id'];
-												$school_year_id = $row['school_year_id'];
-												$student_id = $row['student_id'];
-												
-												echo '<p style="border-top: 1px #f4c63f dotted; 
-												border-bottom: 1px #f4c63f dotted;">'.$fgrades. '</p>';
-											
-												$counter++;
-												$average += $fgrades;
-											}
-											$totalaverage = $average / $counter;
-											echo '<strong>'.sprintf("%0.2f", $totalaverage).'</strong>';
-											echo '</div>';
-										}
-										
-						
-						
-								
 						$query3 = $this->db->query('SELECT * FROM grading_sheets, subject WHERE
-									 grading_sheets.subject_code = subject.subject_code
-									 and semester_id="'.$semester_id.'" 
-									 and school_year_id="'.$school_year_id.'"
-									 and term_id = 4
+									 subject.subject_code="'.$subject_code.'"
+									 and grading_sheets.subject_code="'.$subject_code.'"
+									 and term_id = 2
 									 and student_id = "'.$_SESSION['student_id'].'" 
 									 order by subject.subject_code ASC');
 									 
-										$totalcredit = 0;
 										if ($query3->num_rows() > 0) {
 											echo '<div style="width:100%; max-width: 60px; float:left; 
 												border: 1px #f4c63f dotted; text-align: center;">';
@@ -313,15 +274,11 @@
 												
 												echo '<p style="border-top: 1px #f4c63f dotted; 
 												border-bottom: 1px #f4c63f dotted;">'.$credit. '</p>';
-											
-												$totalcredit += $credit;
 											}
-											echo '<strong>'.$totalcredit.'</strong>';
 											echo '</div>';	
 										}
 										
 							
-								
 														
 					} // end main if
 				echo '</div>';		
@@ -340,8 +297,8 @@
 	<div data-role="footer" data-theme="e" data-position="fixed">
 		<div data-role="navbar">
 			<ul>
-				<li><a href="<?php echo base_url();?>index.php/gradesinquiry/search_grade_sm_sy" data-role="button" data-icon="arrow-r" class="ui-btn-active ui-state-persist" data-transition="none">Search Grades per Semester and School Year</a></li>
+				<li><a href="<?php echo base_url();?>index.php/gradesinquiry/search_grade_sm_sy" data-role="button" data-icon="arrow-r" data-transition="none">Search Grades per Semester and School Year</a></li>
 				<li><a href="<?php echo base_url();?>index.php/gradesinquiry/search_grade_sy" data-role="button" data-icon="arrow-r" data-transition="none">Search Grades per School Year</a></li>
-				<li><a href="<?php echo base_url();?>index.php/gradesinquiry/search_grade_subj" data-role="button" data-icon="arrow-r" data-transition="none">Search Grades per Subject</a></li>
+				<li><a href="<?php echo base_url();?>index.php/gradesinquiry/search_grade_subj" data-role="button" data-icon="arrow-r" class="ui-btn-active ui-state-persist" data-transition="none">Search Grades per Subject</a></li>
 			</ul>
 		</div>

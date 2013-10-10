@@ -17,9 +17,9 @@ mysql_query("INSERT INTO school_year (fschool_year) VALUES('2013-2014')") or die
 
 
 
-mysql_query("INSERT INTO semester (semester_name) VALUES('First')") or die(mysql_error()); 
+mysql_query("INSERT INTO semester (semester_name) VALUES('First Semester')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO semester (semester_name) VALUES('Second')") or die(mysql_error());
+mysql_query("INSERT INTO semester (semester_name) VALUES('Second Semester')") or die(mysql_error());
 
 mysql_query("INSERT INTO semester (semester_name) VALUES('Summer')") or die(mysql_error());
 
@@ -54,7 +54,7 @@ mysql_query("INSERT INTO student (student_id, first_name, last_name, age, email,
 mysql_query("INSERT INTO enrolled_year (school_year_id, fschool_year, student_id) VALUES('1', '2011-2012', 'C11-0395')") or die(mysql_error());
 mysql_query("INSERT INTO enrolled_year (school_year_id, fschool_year, student_id) VALUES('2', '2012-2013', 'C11-0395')") or die(mysql_error());
 mysql_query("INSERT INTO enrolled_year (school_year_id, fschool_year, student_id) VALUES('3', '2013-2014', 'C11-0395')") or die(mysql_error());
-mysql_query("INSERT INTO enrolled_year (school_year_id, fschool_year, student_id) VALUES('2', '2011-2012', 'C12-0355')") or die(mysql_error());
+mysql_query("INSERT INTO enrolled_year (school_year_id, fschool_year, student_id) VALUES('2', '2012-2013', 'C12-0355')") or die(mysql_error());
 mysql_query("INSERT INTO enrolled_year (school_year_id, fschool_year, student_id) VALUES('3', '2013-2014', 'C12-0355')") or die(mysql_error());
 mysql_query("INSERT INTO enrolled_year (school_year_id, fschool_year, student_id) VALUES('3', '2013-2014', 'C13-0573')") or die(mysql_error());
 
@@ -121,7 +121,7 @@ mysql_query("INSERT INTO subject (subject_code, subject_name, credit) VALUES('Ph
 mysql_query("INSERT INTO subject (subject_code, subject_name, credit) VALUES('SocSc-5', '', '3.0')") or die(mysql_error());
 mysql_query("INSERT INTO subject (subject_code, subject_name, credit) VALUES('SocSc-6', '', '3.0')") or die(mysql_error());
 mysql_query("INSERT INTO subject (subject_code, subject_name, credit) VALUES('IT-202', '', '3.0')") or die(mysql_error());
-
+mysql_query("INSERT INTO subject (subject_code, subject_name, credit) VALUES('SocSc-3', '', '3.0')") or die(mysql_error());
 
 
 
@@ -200,7 +200,7 @@ mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semeste
 mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) 
 										VALUES('Fil-2', 1.0, 1, 2, 1, 'C11-0395')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('ITE-130', 1.0, 1, 2, 1, 'C11-0395')") or die(mysql_error()); 
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('ITE-102', 1.30, 1, 2, 1, 'C11-0395')") or die(mysql_error()); 
 
 mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Eng-2', 1.20, 1, 2, 1, 'C11-0395')") or die(mysql_error()); 
 
@@ -219,7 +219,7 @@ mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semeste
 //Cutab, Second Sem, 2011-2012, Midterm
 mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Fil-2', 1.08, 2, 2, 1, 'C11-0395')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('ITE-130', 1.30, 2, 2, 1, 'C11-0395')") or die(mysql_error()); 
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('ITE-102', 1.30, 2, 2, 1, 'C11-0395')") or die(mysql_error()); 
 
 mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Eng-2', 1.30, 2, 2, 1, 'C11-0395')") or die(mysql_error()); 
 
@@ -238,7 +238,7 @@ mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semeste
 //Cutab, Second Sem, 2011-2012, SemiFinal
 mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Fil-2', 1.04, 3, 2, 1, 'C11-0395')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('ITE-130', 1.06, 3, 2, 1, 'C11-0395')") or die(mysql_error()); 
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('ITE-102', 1.06, 3, 2, 1, 'C11-0395')") or die(mysql_error()); 
 
 mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Eng-2', 1.10, 3, 2, 1, 'C11-0395')") or die(mysql_error()); 
 
@@ -257,7 +257,7 @@ mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semeste
 //Cutab, Second Sem, 2011-2012, Final
 mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Fil-2', 1.02, 4, 2, 1, 'C11-0395')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('ITE-130', 1.20, 4, 2, 1, 'C11-0395')") or die(mysql_error()); 
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('ITE-102', 1.20, 4, 2, 1, 'C11-0395')") or die(mysql_error()); 
 
 mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Eng-2', 1.08, 4, 2, 1, 'C11-0395')") or die(mysql_error()); 
 
@@ -351,9 +351,9 @@ mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semeste
 
 mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Eng-3', 1.02, 4, 1, 2, 'C11-0395')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('RS-2', 1.06, 3, 1, 2, 'C11-0395')") or die(mysql_error());
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('RS-2', 1.06, 4, 1, 2, 'C11-0395')") or die(mysql_error());
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('PE-3', 1.0, 3, 1, 2, 'C11-0395')") or die(mysql_error());
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('PE-3', 1.0, 4, 1, 2, 'C11-0395')") or die(mysql_error());
 
 
 
@@ -474,38 +474,38 @@ mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semeste
 //Abijay, Prelim, First Sem, 2013-2014
 mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Math-111', 1.5, 1, 1, 3, 'C13-0573')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('RS-1', 2.9, 1, 1, 3, 'C13-057')") or die(mysql_error()); 
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('RS-1', 2.9, 1, 1, 3, 'C13-0573')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('PE-3', 1.40, 1, 1, 3, 'C13-057')") or die(mysql_error()); 
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('PE-3', 1.40, 1, 1, 3, 'C13-0573')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Fil-1', 1.10, 1, 1, 3, 'C13-057')") or die(mysql_error()); 
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Fil-1', 1.10, 1, 1, 3, 'C13-0573')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('ITE-102', 1.4, 1, 1, 3, 'C13-057')") or die(mysql_error()); 
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('ITE-102', 1.4, 1, 1, 3, 'C13-0573')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('SocSc-5', 2.2, 1, 1, 3, 'C13-057')") or die(mysql_error()); 
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('SocSc-5', 2.2, 1, 1, 3, 'C13-0573')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Math-112', 2.30, 1, 1, 3, 'C13-057')") or die(mysql_error()); 
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Math-112', 2.30, 1, 1, 3, 'C13-0573')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('NatSc-3', 2.0, 1, 1, 3, 'C13-057')") or die(mysql_error());
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('NatSc-3', 2.0, 1, 1, 3, 'C13-0573')") or die(mysql_error());
 
 
 
 //Abijay, Midterm, First Sem, 2013-2014
 mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Math-111', 1.8, 2, 1, 3, 'C13-0573')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('RS-1', 2.1, 2, 1, 3, 'C13-057')") or die(mysql_error()); 
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('RS-1', 2.1, 2, 1, 3, 'C13-0573')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('PE-3', 1.60, 2, 1, 3, 'C13-057')") or die(mysql_error()); 
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('PE-3', 1.60, 2, 1, 3, 'C13-0573')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Fil-1', 1.40, 2, 1, 3, 'C13-057')") or die(mysql_error()); 
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Fil-1', 1.40, 2, 1, 3, 'C13-0573')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('ITE-102', 1.3, 2, 1, 3, 'C13-057')") or die(mysql_error()); 
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('ITE-102', 1.3, 2, 1, 3, 'C13-0573')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('SocSc-5', 1.9, 2, 1, 3, 'C13-057')") or die(mysql_error()); 
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('SocSc-5', 1.9, 2, 1, 3, 'C13-0573')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Math-112', 2.0, 2, 1, 3, 'C13-057')") or die(mysql_error()); 
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Math-112', 2.0, 2, 1, 3, 'C13-0573')") or die(mysql_error()); 
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('NatSc-3', 2.9, 2, 1, 3, 'C13-057')") or die(mysql_error());
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('NatSc-3', 2.9, 2, 1, 3, 'C13-0573')") or die(mysql_error());
 
 
 
@@ -692,7 +692,7 @@ mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semeste
 
 mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Math-213', 1.0, 1, 1, 3, 'C12-0355')") or die(mysql_error());
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Phys-21L', 1.0, 1, 1, 3, 'C12-0355')") or die(mysql_error());
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Phys-22L', 1.0, 1, 1, 3, 'C12-0355')") or die(mysql_error());
 
 mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('IT-202', 2.2, 1, 1, 3, 'C12-0355')") or die(mysql_error());
 
@@ -713,7 +713,7 @@ mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semeste
 
 mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Math-213', 1.0, 2, 1, 3, 'C12-0355')") or die(mysql_error());
 
-mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Phys-21L', 1.02, 2, 1, 3, 'C12-0355')") or die(mysql_error());
+mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('Phys-22L', 1.02, 2, 1, 3, 'C12-0355')") or die(mysql_error());
 
 mysql_query("INSERT INTO grading_sheets (subject_code, fgrades, term_id, semester_id, school_year_id, student_id) VALUES('IT-202', 2.2, 2, 1, 3, 'C12-0355')") or die(mysql_error());
 

@@ -4,7 +4,7 @@
     			<h1><img src="<?php echo base_url();?>images/header.png" /></h1>  	
 	    			<nav data-role="navbar">
 	    			<ul>
-	    				<li><a href="<?php echo base_url();?>index.php/gradesinquiry/profile" data-icon="home" id="profile" class="ui-btn-active ui-state-persist" data-transition="none">Profile</a></li>
+	    				<li><a href="<?php echo base_url();?>index.php/gradesinquiry/profile" data-icon="home" id="profile" class="ui-btn-active ui-state-persist" data-transition="none">Dashboard</a></li>
 	    				<li><a href="../home/logout" data-icon="delete" data-transition="none">Logout</a></li>
 	    			</ul>
 	    			</nav>	
@@ -42,8 +42,8 @@
 				
 				<div data-role="controlgroup" align="center" data-type="vertical">
 					<a href="<?php echo base_url();?>index.php/gradesinquiry/search_grade_sm_sy" data-role="button" data-icon="arrow-r">Search Grades per Semester and School Year</a>
-                    <a href="<?php echo base_url();?>index.php/gradesinquiry/search_grade_sm_sy" data-role="button" data-icon="arrow-r">Search Grades per School Year</a>
-                    <a href="<?php echo base_url();?>index.php/gradesinquiry/search_grade_sm_sy" data-role="button" data-icon="arrow-r">Search Grades per Subject</a>
+                    <a href="<?php echo base_url();?>index.php/gradesinquiry/search_grade_sy" data-role="button" data-icon="arrow-r">Search Grades per School Year</a>
+                    <a href="<?php echo base_url();?>index.php/gradesinquiry/search_grade_subj" data-role="button" data-icon="arrow-r">Search Grades per Subject</a>
 				</div>   
     		</div>
 

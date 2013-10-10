@@ -43,7 +43,7 @@ include 'header.php';
 		$result=@mysql_query($sql);
 		if (!$result)
 		{
-		mysql_query("CREATE TABLE semester(semester_id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, semester_name char(10))") or die(mysql_error());  
+		mysql_query("CREATE TABLE semester(semester_id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, semester_name char(20))") or die(mysql_error());  
 		echo "<p>Table semester created successfully.</p>";
 		}
 			
@@ -73,7 +73,7 @@ include 'header.php';
 		$result=@mysql_query($sql);
 		if (!$result)
 		{
-		mysql_query("CREATE TABLE subject(subject_code varchar(11) NOT NULL PRIMARY KEY, subject_name varchar(100), credit int(2) )") or die(mysql_error());  
+		mysql_query("CREATE TABLE subject(subject_id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, subject_code varchar(11), subject_name varchar(100), credit int(2) )") or die(mysql_error());  
 		echo "<p>Table subject created successfully.</p>";
 		}
 		
