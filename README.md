@@ -1,5 +1,4 @@
 # smc-grades-inquiry-system
-mobile-computing-final-project
 
 This is a mobile application built in PhoneGap/Cordova framework.
 
